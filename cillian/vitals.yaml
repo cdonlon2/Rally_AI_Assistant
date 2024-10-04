@@ -1,0 +1,8 @@
+apiVersion: v1
+metadata:
+  askId: AIDE_0084563
+  caAgileId: 155272761784d
+  projectKey: com.optum:imap-mapper
+  projectFriendlyName: com.optum:imap-mapper
+  componentType: code
+  targetQG: GATE_08

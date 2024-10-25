@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from langchain_openai import AzureChatOpenAI
 from openai import AzureOpenAI
 from test_rally import create_user_story
-  
+
 load_dotenv()
 clientAzOpenAiEmb = AzureOpenAI(  
         api_key=os.getenv("AZURE_OPENAI_API_KEY"),

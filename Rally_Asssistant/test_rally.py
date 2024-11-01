@@ -3,7 +3,7 @@ from pyral import Rally, rallyWorkset, RallyRESTAPIError
 def create_user_story(title, description, acceptance_criteria, project_name):  
     try:  
         # Initialize Rally object  
-        rally = Rally(server="rally1.rallydev.com", apikey="_oQYm9R1VSkCWO3p6ecD2VeDAs6Jf3UG5ifrDABpwm8U", workspace='Optum',  project='U2 Commercial Analytic  Engineering New Implementations')  
+        rally = Rally(server="rally1.rallydev.com", apikey="_oQYm9R1VSkCWO3p6ecD2VeDAs6Jf3UG5ifrDABpwm8U", workspace='Optum',  project='Rally AI Assistant')  
   
         
         # Create user story data  
@@ -31,3 +31,5 @@ def create_user_story(title, description, acceptance_criteria, project_name):
         print(f"Rally REST API Error: {e}")  
     except Exception as e:  
         print(f"An unexpected error occurred: {e}")  
+
+    

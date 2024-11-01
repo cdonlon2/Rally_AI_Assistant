@@ -1,0 +1,262 @@
+{
+    "summary_bot": [
+        {
+            "role": "system",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "A bot that assists users by taking a few sentences or paragraphs of requirements text, breaking them down into simple, concise, and easy-to-understand summarized points, and returning these summarized points to the user. Identify the requester if one is mentioned. return the summary in a way that it would be optimised for passing the chatGPT prompts"
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "I need to add a new field to the client_enriched database table called total_days. It's an int that takes the check_in field from the check_out field and returns the difference. It should be null if theres no information in the other fields."
+                }
+            ]
+        },
+        {
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Add a new field `total_days` (int) to the `client_enriched` database table. Calculate `total_days` as the difference between `check_out` and `check_in` fields. Set `total_days` to null if `check_in` or `check_out` fields are empty."
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "RnD wants us to add a new dropdown box to the UI under the Rule Name box to select what table the rule should run against. Follow established UI standards. Show only tables the user has access to. If there are no tables available then provide a 'none available' message in the drop down box"
+                }
+            ]
+        },
+        {
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "RnD are requesting a UI change. Add a new dropdown box under the Rule Name box in the UI. Dropdown should allow selection of tables for rule execution. Follow established UI standards for design. Show only tables the user has access to. Display 'none available' message if no tables are accessible."
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Users are requesting the ability to export the index tables for better analysis and reporting. This feature should be accessible from the 'More' button and offer options to export either visible columns or all columns to a CSV file."
+                }
+            ]
+        },
+        {
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Users want to export index tables for analysis and reporting. Feature should be accessible from the 'More' button. Options to export either visible columns or all columns. Export format should be CSV."
+                }
+            ]
+        }
+    ],
+    "title_bot" : [
+        {
+            "role": "system",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "You are a helpful AI that helps people write a title for user stories given a summary of requirements. Return a string of the title"
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Add a new field `total_days` (int) to the `client_enriched` database table. Calculate `total_days` as the difference between `check_out` and `check_in` fields. Set `total_days` to null if `check_in` or `check_out` fields are empty."
+                }
+            ]
+        },
+        {
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Add 'total_days' Field to 'client_enriched' Table"
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "RnD are requesting a UI change. Add a new dropdown box under the Rule Name box in the UI. Dropdown should allow selection of tables for rule execution. Follow established UI standards for design. Show only tables the user has access to. Display 'none available' message if no tables are accessible."
+                }
+            ]
+        },
+        {
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Add Dropdown for Table Selection Under Rule Name Box"
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Users want to export index tables for analysis and reporting. Feature should be accessible from the 'More' button. Options to export either visible columns or all columns. Export format should be CSV."
+                }
+            ]
+        },
+        {
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Enable Export of Index Table Contents"
+                }
+            ]
+        }
+    ],
+    "gherkin_bot" : [
+        {
+            "role": "system",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "A bot that assists users by taking a list of points or requirements and converting them into structured Gherkin format, which is used for creating user stories in Behavior-Driven Development (BDD). Do not add '''Gherkin"
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Add a new field `total_days` (int) to the `client_enriched` database table. Calculate `total_days` as the difference between `check_out` and `check_in` fields. Set `total_days` to null if `check_in` or `check_out` fields are empty."
+                }
+            ]
+        },
+        {
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Feature: Add `total_days` Field to `client_enriched` Table\\n\\n  Scenario: Add new field `total_days` to `client_enriched` table\\n    Given the `client_enriched` table exists in the database\\n    When a new field `total_days` of type integer is added to the table\\n    Then the table schema should include the `total_days` field\\n\\n  Scenario: Calculate `total_days` as the difference between `check_out` and `check_in`\\n    Given the `check_in` and `check_out` fields exist in the `client_enriched` table\\n    When the difference between `check_out` and `check_in` is calculated\\n    Then the `total_days` field should be updated with the calculated difference in days\\n\\n  Scenario: Set `total_days` to null if `check_in` or `check_out` fields are empty\\n    Given the `check_in` or `check_out` fields may be empty\\n    When either `check_in` or `check_out` is empty\\n    Then the `total_days` field should be set to null"
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "RnD are requesting a UI change. Add a new dropdown box under the Rule Name box in the UI. Dropdown should allow selection of tables for rule execution. Follow established UI standards for design. Show only tables the user has access to. Display 'none available' message if no tables are accessible."
+                }
+            ]
+        },
+        {
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Feature: Add Dropdown Box for Table Selection under Rule Name Box\\n\\n  Scenario: Dropdown box added under Rule Name box\\n    Given the user is on the rule configuration page\\n    When the UI is loaded\\n    Then a new dropdown box should be displayed under the Rule Name box\\n    And the dropdown box should allow selection of tables for rule execution\\n\\n  Scenario: Follow established UI standards for design\\n    Given the UI standards are established\\n    When the dropdown box is added\\n    Then the design should comply with the established UI standards\\n\\n  Scenario: Show only accessible tables in the dropdown\\n    Given the user has access to certain tables\\n    When the user clicks on the dropdown box\\n    Then only the tables the user has access to should be displayed\\n\\n  Scenario: Display 'none available' message if no tables are accessible\\n    Given the user has no access to any tables\\n    When the user clicks on the dropdown box\\n    Then a message saying 'none available' should be displayed"
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Users want to export index tables for analysis and reporting. Feature should be accessible from the 'More' button. Options to export either visible columns or all columns. Export format should be CSV."
+                }
+            ]
+        },
+        {
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Feature: Export Index Tables for Analysis and Reporting\\n\\n  Scenario: Export options are accessible from the 'More' button\\n    Given the user is on the index table page\\n    When the user clicks on the 'More' button\\n    Then the export options should be displayed\\n\\n  Scenario: Export visible columns to CSV\\n    Given the user has selected the option to export visible columns\\n    When the user initiates the export process\\n    Then a CSV file containing only the visible columns should be generated\\n\\n  Scenario: Export all columns to CSV\\n    Given the user has selected the option to export all columns\\n    When the user initiates the export process\\n    Then a CSV file containing all columns should be generated"
+                }
+            ]
+        }
+    ],
+    "acceptance_criteria_bot" : [
+        {
+            "role": "system",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "A bot that takes a summarised list of requirements and returns a list of action points following scrum best practices. Each task should have a clear outcome without dictating the specific steps required to achieve the solution. it should include some quality best pracitices"
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Add a new field `total_days` (int) to the `client_enriched` database table. Calculate `total_days` as the difference between `check_out` and `check_in` fields. Set `total_days` to null if `check_in` or `check_out` fields are empty."
+                }
+            ]
+        },
+        {
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "A new field named `total_days` should be added to the `client_enriched` database table.\\nThe `total_days` field should be of type integer.\\n`total_days` should be calculated as the difference between `check_out` and `check_in` fields.\\n`total_days` should be set to null if `check_in` or `check_out` fields are empty.\\nThe calculation of `total_days` should be updated automatically whenever `check_in` or `check_out` fields are modified.\\nThe `total_days` field should be accurately populated for existing records based on their current `check_in` and `check_out` values.\\nValidation should ensure that `total_days` is never negative.\\n"
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "RnD are requesting a UI change. Add a new dropdown box under the Rule Name box in the UI. Dropdown should allow selection of tables for rule execution. Follow established UI standards for design. Show only tables the user has access to. Display 'none available' message if no tables are accessible."
+                }
+            ]
+        },
+        {
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "A new dropdown box should be added under the Rule Name box in the UI. \\nThe dropdown should allow users to select tables for rule execution. \\nThe dropdown design should follow the established UI standards. \\nOnly tables that the user has access to should be displayed in the dropdown. \\nIf no tables are accessible, display a 'none available' message in the dropdown. \\nThe dropdown should be functional and allow selection or deselection of tables. \\nThe dropdown should be appropriately labeled for user clarity. \\nThe selected table should be retained and displayed on page reload."
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Users want to export index tables for analysis and reporting. Feature should be accessible from the 'More' button. Options to export either visible columns or all columns. Export format should be CSV."
+                }
+            ]
+        },
+        {
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "When on the index table page, the option to export should be under the More button.\\nAll export files should be in the CSV format.\\nAn option should exist for Visible Columns and All Columns when exporting.\\nUsers should receive a confirmation that the export has completed.\\nThe export files should include the table name and a timestamp (eg. index_table_20231005.csv)"
+                }
+            ]
+        }
+    ]
+}

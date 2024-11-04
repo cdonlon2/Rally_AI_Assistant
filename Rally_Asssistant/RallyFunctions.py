@@ -1,5 +1,7 @@
-from pyral import Rally, rallyWorkset, RallyRESTAPIError  
+from pyral import Rally, rallyWorkset, RallyRESTAPIError
+from datetime import datetime, timedelta 
 
+#This function lists all default colours available in Rally. Other colours can be added here if users request it.
 def get_default_colours():
     colours = {
         "Blue":"#21a2e0",
@@ -14,25 +16,35 @@ def get_default_colours():
     }
     return colours
 
+#Get all features currently in a project. Return a dictionary with a Key feature_id: Name, State
 def get_features(projectName):  
     try:  
         # Initialize Rally object  
-        rally = Rally(server="rally1.rallydev.com", apikey="_oQYm9R1VSkCWO3p6ecD2VeDAs6Jf3UG5ifrDABpwm8U", workspace='Optum',  project='Rally AI Assistant')
+        rally = Rally(server="rally1.rallydev.com", apikey="_oQYm9R1VSkCWO3p6ecD2VeDAs6Jf3UG5ifrDABpwm8U", workspace='Optum',  project=projectName)
     except Exception as e:  
         print(f"An error occurred: {e}")
 
     #Define the query to get all Features (Portfolio Items of type 'Feature')  
     query_criteria = 'PortfolioItemType.Name = "Feature"'  
-    response = rally.get('PortfolioItem', fetch="FormattedID,Name,State", query=query_criteria, project=projectName)  
+    response = rally.get('PortfolioItem', fetch="FormattedID,Name,State,ObjectID", query=query_criteria, project=projectName)  
     
+    #Create the features dictionary
+    features = {} 
+
     # Process and print the results  
     for feature in response:  
         feature_id = feature.FormattedID  
         feature_name = feature.Name  
         feature_state = feature.State.Name   
-        
-        print(f"ID: {feature_id}, Name: {feature_name}, State: {feature_state}")   
-  
+        features[feature_id] = {  
+            'Name': feature_name,  
+            'State': feature_state,
+            'ObjectID':feature.ObjectID,
+        }
+        print(f"ID: {feature_id}, Name: {feature_name}, State: {feature_state}, ObjectID: {feature.ObjectID}")
+    return features
+
+#Used to find the colours associated with stories in the project
 def get_user_stories_with_colors(projectName):       
     # Initialize your Rally instance  
     RALLY_SERVER = 'rally1.rallydev.com'  
@@ -50,18 +62,21 @@ def get_user_stories_with_colors(projectName):
     for story in response:  
         print(f"User Story Name: {story.Name}, Display Color: {story.DisplayColor}")  
 
-def create_user_story(title, description, acceptance_criteria, project_name):  
+#Create a user story in a given project. User supplies the new user story name, description, acceptance criteria, feature(default to null) and colour (default blue)
+def create_user_story(title, description, acceptance_criteria, project_name, feature=None, colour="#21a2e0"):  
     try:  
         # Initialize Rally object  
         rally = Rally(server="rally1.rallydev.com", apikey="_oQYm9R1VSkCWO3p6ecD2VeDAs6Jf3UG5ifrDABpwm8U", workspace='Optum',  project='Rally AI Assistant')  
   
         
-        # Create user story data  
+        # Create user story data
+        # Note the Portfolio item is the feature ObjectID(EG 813146813405) and not the formatted id (EG F38435) and is a string
         user_story_data = {  
             "Name": title,  
-            "DisplayColor": "#4a1d7e",  
+            "DisplayColor": colour,  
             "Description": description,  
-            "Notes": acceptance_criteria,  
+            "Notes": acceptance_criteria,
+            'PortfolioItem': feature,
         }  
   
         # Create user story in Rally  
@@ -81,3 +96,7 @@ def create_user_story(title, description, acceptance_criteria, project_name):
         print(f"Rally REST API Error: {e}")  
     except Exception as e:  
         print(f"An unexpected error occurred: {e}")  
+
+
+#get_features('Rally AI Assistant')
+create_user_story('Test', 'TEST2', 'TEST 3', 'Rally AI Assistant', '813146813405', '#107c1e')
